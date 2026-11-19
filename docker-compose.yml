@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  support-agent:
+    build: .
+    container_name: customer-support-multi-agent
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
